@@ -20,9 +20,9 @@
         <item >black</item>
     </string-array>
     <string-array name="themes">
-        <item >灰色背景</item>
-        <item >蓝色背景</item>
-        <item >黑色背景</item>
+        <item >gray background</item>
+        <item >blue background</item>
+        <item >black background</item>
     </string-array>
     
 </resources>

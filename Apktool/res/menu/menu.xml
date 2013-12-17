@@ -2,30 +2,23 @@
     <menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item 
 			android:id="@+id/setting" 
-			android:icon="@drawable/ic_settings"
-			android:title="@string/settings"></item>
+			android:title="@string/setting"></item>
 		<item 
 		    android:id="@+id/about" 
-			android:icon="@drawable/ic_inform"
-			android:title="@string/aboutt"></item>
+			android:title="@string/about"></item>
 		<item 
 		    android:id="@+id/refresh"
-			android:icon="@drawable/ic_refresh"
 			android:title="@string/refresh"></item>
 		<item 
 		    android:id="@+id/task"
-			android:icon="@drawable/ic_tasks"
 			android:title="@string/tasks"></item>
 		<item 
 		    android:id="@+id/rom"
-			android:icon="@drawable/ic_rom"
 			android:title="@string/makerom"></item>
 		<item 
 		    android:id="@+id/donate" 
-			android:icon="@drawable/ic_donate"
 			android:title="@string/donate"></item>
 		<item 
-			android:icon="@drawable/ic_close"
 			android:id="@+id/exit" 
 			android:title="@string/exit"></item>
     </menu>

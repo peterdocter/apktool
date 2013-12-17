@@ -29,7 +29,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -75,8 +74,8 @@ public class MainActivity extends Activity {
 	private static final int UNPACKIMG = 6;
 	private static final int REPACKIMG = 7;
 	private static final int TASK = 8;
-	private static final int JAVA = 9;
-	private static final int CLASS = 10;
+//	private static final int JAVA = 9;
+//	private static final int CLASS = 10;
 	
 	
 
@@ -222,9 +221,7 @@ public class MainActivity extends Activity {
 			case 10:
 				doWork(getString(R.string.delete_finish), bundle);
 				break;
-			case 11:
-				doWork(getString(R.string.deodexing), bundle);
-				break; 					
+			
 			}
 		}
 	}
@@ -262,7 +259,7 @@ public class MainActivity extends Activity {
 					proerr = process.getErrorStream();
 					proin = process.getInputStream();
 					os.writeBytes(new String(
-							"LD_LIBRARY_PATH=/data/data/per.pqy.apktool/lix:$LD_LIBRARY_PATH ")
+							"LD_LIBRARY_PATH=/data/data/per.pqy.apktool/lix:$LD_LIBRARY_PATH PATH=/data/data/per.pqy.apktool/lix:$PATH ")     	//Note:This line is very important!
 							+ command + "\n");
 					os.writeBytes("exit\n");
 					os.flush();
@@ -384,13 +381,13 @@ public class MainActivity extends Activity {
 									threadWork(MainActivity.this, getString(R.string.signing), command4, 1);					
 									break;
 								case make_odex:								
-									final String command5 = new String(" /data/data/per.pqy.apktool/lix/dexopt-wrapper ") 
+									final String command5 = new String(" dexopt-wrapper ") 
 										+ "'" + uri + "' '" + uri.substring(0, uri.length() - 3) + "odex'";
 									threadWork(MainActivity.this, getString(R.string.making), command5, 6);	
 									break;
 
 								case zipalign:
-									final String command7 = new String(" /data/data/per.pqy.apktool/lix/zipalign -f -v 4 ") + "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_zipalign.apk'";
+									final String command7 = new String(" zipalign -f -v 4 ") + "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_zipalign.apk'";
 									threadWork(MainActivity.this, getString(R.string.aligning), command7, 8);
 									break;
 								case install:
@@ -402,7 +399,7 @@ public class MainActivity extends Activity {
 									
 									
 								case delete_dex:
-									final String command9 = new String("/data/data/per.pqy.apktool/lix/7z d -tzip '") + uri + "' classes.dex";
+									final String command9 = new String("7z d -tzip '") + uri + "' classes.dex";
 									threadWork(MainActivity.this, getString(R.string.deleting), command9, 10);
 									break;
 								case extract_sign:
@@ -410,13 +407,13 @@ public class MainActivity extends Activity {
 									if (!new File(f.getParent() + "/META-INF").exists())
 									{
 										final String command10 = new String("busybox sh /data/data/per.pqy.apktool/mydata/tool.sh ") + "'" + f.getParent() + "' '" + f.getName() + "'";
-										threadWork(MainActivity.this, getString(R.string.extracting), command10, 6);
+										threadWork(MainActivity.this, getString(R.string.unpacking), command10, 6);
 									}
 									else
 										Toast.makeText(MainActivity.this, getString(R.string.dir_exist), Toast.LENGTH_LONG).show();
 									break;
 								case delete_sign:
-									final String command11 = new String("/data/data/per.pqy.apktool/lix/7z d -tzip ") + "'" + uri + "'" + " META-INF";
+									final String command11 = new String("7z d -tzip ") + "'" + uri + "'" + " META-INF";
 									threadWork(MainActivity.this, getString(R.string.deleting), command11, 10);
 									break;
 								case add_sign:
@@ -424,7 +421,7 @@ public class MainActivity extends Activity {
 									if (new File(str + "/META-INF").exists())
 									{
 										str = new File(uri).getParent();
-										final String command12 = new String("/data/data/per.pqy.apktool/lix/7z a -tzip ") + "'" + uri + "' '" + str + "/META-INF'";
+										final String command12 = new String("7z a -tzip ") + "'" + uri + "' '" + str + "/META-INF'";
 										threadWork(MainActivity.this, getString(R.string.adding), command12, 8);}
 									else
 										Toast.makeText(MainActivity.this, getString(R.string.dir_not_exist), Toast.LENGTH_LONG).show();
@@ -467,6 +464,8 @@ public class MainActivity extends Activity {
 						public void onClick(DialogInterface dialog, int which) {
 							String apktoolVersion = PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
 									   .getString("apktool_version", "2.0");
+							String aaptVersion = PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
+									   .getString("aapt_version", "4.4");
 							String diff = "";
 							if(apktoolVersion.equals("2.0")){
 								diff = " -o ";							
@@ -476,8 +475,8 @@ public class MainActivity extends Activity {
 							switch (which) {
 							case 0:
 								if (uri.endsWith("_src")) {
-									final String command0 = apktoolVersion+" b -f -a /data/data/per.pqy.apktool/lix/aapt '"
-											+ uri + "' "+diff+" '" + uri + ".apk'";
+									final String command0 = apktoolVersion+" b -f -a /data/data/per.pqy.apktool/lix/aapt"
+								                            + aaptVersion+" '"+ uri + "' "+diff+" '" + uri + ".apk'";
 									threadWork(MainActivity.this,
 											getString(R.string.recompiling),
 											command0, 2);
@@ -573,7 +572,7 @@ public class MainActivity extends Activity {
 													+ new File(uri).getParent()
 													+ "/classes.dex'");
 									final String command1 = new String(
-											" /data/data/per.pqy.apktool/lix/7z a -tzip '"
+											" 7z a -tzip '"
 													+ apkFile + "' '"
 													+ new File(uri).getParent()
 													+ "/classes.dex'");
@@ -596,7 +595,7 @@ public class MainActivity extends Activity {
 													+ new File(uri).getParent()
 													+ "/classes.dex'");
 									final String command2 = new String(
-											" /data/data/per.pqy.apktool/lix/7z a -tzip '"
+											" 7z a -tzip '"
 													+ jarFile + "' '"
 													+ new File(uri).getParent()
 													+ "/classes.dex'");
@@ -693,18 +692,6 @@ public class MainActivity extends Activity {
 										+ "' /data/data/per.pqy.apktool/mydata");
 								extractData();
 								break;
-							case 4:
-									if (uri.endsWith(".zip"))
-									{
-										final String command1 = new String("busybox sh /data/data/per.pqy.apktool/mydata/mod/signapk_recovery.sh ")
-											+ "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_sign.zip'";
-										threadWork(MainActivity.this, getString(R.string.signing_zip), command1, 1);
-									}
-									else
-									{
-										RunExec.Cmd(shell, new String(" echo Нифига не зип "));
-									}
-									break;									
 							case 5:
 								return;
 							}
@@ -723,7 +710,7 @@ public class MainActivity extends Activity {
 											+ tmp.getParent()
 											+ "' boot.img new.img mt65xx";
 									threadWork(MainActivity.this,
-											getString(R.string.extracting),
+											getString(R.string.unpacking),
 											command0, 6);
 								} else {
 									File tmp = new File(uri);
@@ -732,7 +719,7 @@ public class MainActivity extends Activity {
 											+ tmp.getParent()
 											+ "' recovery.img new.img mt65xx";
 									threadWork(MainActivity.this,
-											getString(R.string.extracting),
+											getString(R.string.unpacking),
 											command0, 6);
 								}
 								break;
@@ -744,7 +731,7 @@ public class MainActivity extends Activity {
 											+ tmp.getParent()
 											+ "' boot.img new.img";
 									threadWork(MainActivity.this,
-											getString(R.string.extracting),
+											getString(R.string.unpacking),
 											command1, 6);
 								} else {
 									File tmp = new File(uri);
@@ -753,7 +740,7 @@ public class MainActivity extends Activity {
 											+ tmp.getParent()
 											+ "' recovery.img new.img";
 									threadWork(MainActivity.this,
-											getString(R.string.extracting),
+											getString(R.string.unpacking),
 											command1, 6);
 								}
 								break;
@@ -775,7 +762,7 @@ public class MainActivity extends Activity {
 										" busybox  sh /data/data/per.pqy.apktool/mydata/repackimg.sh '")
 										+ tmp.getParent() + "' new.img mtk";
 								threadWork(MainActivity.this,
-										getString(R.string.compressing),
+										getString(R.string.repacking),
 										command0, 6);
 
 								break;
@@ -786,7 +773,7 @@ public class MainActivity extends Activity {
 										" busybox sh /data/data/per.pqy.apktool/mydata/repackimg.sh '")
 										+ tmp1.getParent() + "' new.img";
 								threadWork(MainActivity.this,
-										getString(R.string.compressing),
+										getString(R.string.repacking),
 										command1, 6);
 
 								break;
@@ -909,11 +896,11 @@ public class MainActivity extends Activity {
 				PowerManager.FULL_WAKE_LOCK, "My Lock");
 		final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 		if (settings.getBoolean("showAgreement",true) == true) {
-			AlertDialog.Builder b1 = new AlertDialog.Builder(MainActivity.this);
-			b1.setTitle(getString(R.string.declaration)).setMessage(
+			AlertDialog.Builder agreeDialog = new AlertDialog.Builder(MainActivity.this);
+			agreeDialog.setTitle(getString(R.string.declaration)).setMessage(
 					getString(R.string.agreement));
-			b1.setPositiveButton(getString(R.string.ok), null);
-			b1.setNeutralButton((getString(R.string.never_remind)),
+			agreeDialog.setPositiveButton(getString(R.string.ok), null);
+			agreeDialog.setNeutralButton((getString(R.string.never_remind)),
 					new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
@@ -923,8 +910,13 @@ public class MainActivity extends Activity {
 							editor.commit();
 						}
 					});
-			b1.create().show();
+			agreeDialog.create().show();
 		}
+		/*
+		 *Some targets got "Permission denied",maybe /data mounts with noexec flag. 
+		 */
+		RunExec.Cmd(shell, "busybox mount -o remount,exec /data");
+		
 		if (!new File("/data/data/per.pqy.apktool/mydata").exists()) {
 			if (new File("/sdcard/apktool").exists()) {
 				RunExec.Cmd(shell, "rm /data/data/per.pqy.apktool/mydata");
@@ -932,12 +924,12 @@ public class MainActivity extends Activity {
 						"ln -s /sdcard/apktool /data/data/per.pqy.apktool/mydata");
 				extractData();
 			} else {
-				AlertDialog.Builder b1 = new AlertDialog.Builder(
+				AlertDialog.Builder noDataDialog = new AlertDialog.Builder(
 						MainActivity.this);
-				b1.setTitle(getString(R.string.warning)).setMessage(
+				noDataDialog.setTitle(getString(R.string.warning)).setMessage(
 						getString(R.string.data_not_in_sdcard));
-				b1.setPositiveButton(getString(R.string.ok), null);
-				b1.create().show();
+				noDataDialog.setPositiveButton(getString(R.string.ok), null);
+				noDataDialog.create().show();
 			}
 		}
 		setContentView(R.layout.main);

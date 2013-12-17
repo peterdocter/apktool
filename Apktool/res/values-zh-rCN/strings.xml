@@ -72,7 +72,7 @@
         <string name="decompile_dex_finish">反编译dex完成！</string>
         <string name="decompile_res_finish">反编译资源完成！</string>
         <string name="decompile_odex_finish">反编译odex完成！</string>
-        <string name="import_finish">安装完成！</string>
+        <string name="import_finish">导入完成！</string>
         <string name="align_finish">优化完成！</string>
         <string name="delete_finish">删除完成！</string>
         <string name="add_finish">添加完成！</string>
@@ -82,7 +82,7 @@
         <string name="making">正在生成。。。</string>
         <string name="aligning">正在优化。。。</string>
         <string name="deleting">正在删除。。。</string>
-        <string name="extracting">正在提取。。。</string>
+        <string name="unpacking">正在提取。。。</string>
         <string name="dir_exist">当前目录已存在META-INF文件夹，请先删除之。</string>
         <string name="adding">正在添加。。。</string>
         <string name="dir_not_exist">当前目录不存在META-INF文件夹！</string>
@@ -92,7 +92,7 @@
         <string name="jar_not_exist">不存在同名jar文件！</string>
         <string name="new_name">新名称</string>
         <string name="cancel">取消</string><string name="want_to_delete">删除？</string>
-        <string name="compressing">正在打包。。。</string>
+        <string name="repacking">正在打包。。。</string>
         <string name="never_remind">不再提醒</string><string name="put_background">放入后台</string>
         <string name="declaration">作者声明</string>
         <string name="want_to_exit">退出？</string>
@@ -102,7 +102,6 @@
         <string name="vibration_on">操作完成振动提示</string>
         <string name="setting">设置</string>
         <string name="notify">通知栏提示</string>
-        <string name="white_background">白色背景</string>
         <string name="screen_on">开启屏幕常亮</string>
         
         <string name="nofreetask">已达到最大任务数！</string>
@@ -113,15 +112,7 @@
         <string name="warning">警告！</string>
         <string name="data_not_in_sdcard">内存卡根目录未检测到apktool数据目录，您必须先找到apktool数据目录，长按选择“设为apktool数据目录”</string>
         <string name="wrap_msg">输出信息换行</string>
-        <string-array name="java">
-            <item >编译</item>
-            <item >返回</item>
-        </string-array>
-        <string-array name="Class">
-            <item >运行</item>
-            <item >返回</item>
-        </string-array>
-        <string name="running">运行中...</string>
+        <string name="running">运行中。。。</string>
         <string name="make_rom">本功能为新功能，处于测试阶段。目的是自动提取本机ROM制作成刷机包，如果你想在刷机包中加入boot.img，请把它放到apktool数据目录。操作完成后将会在apktool数据目录生成rom文件夹，你可能需要手动修改一下rom/META-INF/com/google/android/updater-script文件。然后把rom目录所有文件打包为zip就是刷机包了。</string>
         <string name="making_rom">制作中，可能需要一段时间。。。</string>
         <string name="vibration_off">操作完成不振动</string>
@@ -136,6 +127,11 @@
         <string name="apktool_version">apktool版本切换</string>
         <string name="aapt_version">aapt版本切换</string>
         <string name="visit">访问</string>
+        <string name="refresh">刷新</string>
+        <string name="tasks">任务</string>
+        <string name="makerom">ROM制作</string>
+        <string name="donate">捐赠</string>
+        <string name="exit">退出</string>
 
         
         
