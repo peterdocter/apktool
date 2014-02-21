@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="apktool_versions">
+        <item>2.0</item><item >1.5.2</item>
+        
+    </string-array>
+    <string-array name="aapt_versions">
+        <item>4.4</item><item >4.3</item>
+        <item >4.2</item>
+        <item >4.1</item>
+        <item >4.0</item>
+        <item >2.3</item>
+        
+        <item >cm10.2</item>
+        <item >cm11.0</item>
+    </string-array>
+    <string-array name="themes_value">
+        <item >gray</item>
+        <item >blue</item>
+        <item >black</item>
+    </string-array>
+    <string-array name="themes">
+        <item >gray background</item>
+        <item >blue background</item>
+        <item >black background</item>
+    </string-array>
+    
+</resources>
