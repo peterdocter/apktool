@@ -814,13 +814,7 @@ public class MainActivity extends Activity {
 						showDialog(DEODEX);
 					else if (uri.endsWith(".dex"))
 						showDialog(DECDEX);
-						
-						/*
-					}else if(uri.endsWith(".java")){
-						showDialog(JAVA);
-					}else if(uri.endsWith(".class")){
-						showDialog(CLASS);
-						*/
+	
 					else {				
 						Intent intent = new Intent(Intent.ACTION_VIEW);
 						final Uri apkuri = Uri.fromFile(new File(uri));
