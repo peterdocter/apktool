@@ -4,25 +4,15 @@
         <item>2.0</item><item >1.5.2</item>
         
     </string-array>
-    <string-array name="aapt_versions">
-        <item>4.4</item><item >4.3</item>
-        <item >4.2</item>
-        <item >4.1</item>
-        <item >4.0</item>
-        <item >2.3</item>
-        
-        <item >cm10.2</item>
-        <item >cm11.0</item>
-    </string-array>
     <string-array name="themes_value">
-        <item >gray</item>
+        <item>black</item><item >gray</item>
         <item >blue</item>
-        <item >black</item>
+        
     </string-array>
     <string-array name="themes">
-        <item >灰色背景</item>
+        <item>黑色背景</item><item >灰色背景</item>
         <item >蓝色背景</item>
-        <item >黑色背景</item>
+        
     </string-array>
     
 </resources>

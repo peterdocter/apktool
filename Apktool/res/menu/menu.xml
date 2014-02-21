@@ -13,9 +13,6 @@
 		    android:id="@+id/task"
 			android:title="@string/tasks"></item>
 		<item 
-		    android:id="@+id/rom"
-			android:title="@string/makerom"></item>
-		<item 
 		    android:id="@+id/donate" 
 			android:title="@string/donate"></item>
 		<item 

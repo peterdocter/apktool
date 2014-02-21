@@ -9,17 +9,16 @@ package per.pqy.apktool;
 
 public final class R {
     public static final class array {
-        public static final int Task=0x7f05000b;
-        public static final int aapt_versions=0x7f050001;
+        public static final int Task=0x7f050008;
         public static final int apktool_versions=0x7f050000;
-        public static final int comp_array=0x7f050004;
-        public static final int dec_array=0x7f050005;
-        public static final int decdex_array=0x7f050007;
-        public static final int deodex_array=0x7f050006;
-        public static final int longpress_array=0x7f050008;
+        public static final int comp_array=0x7f050003;
+        public static final int dec_array=0x7f050004;
+        public static final int decdex_array=0x7f050006;
+        public static final int deodex_array=0x7f050005;
+        public static final int longpress_array=0x7f050007;
         public static final int repackimg=0x7f05000a;
-        public static final int themes=0x7f050003;
-        public static final int themes_value=0x7f050002;
+        public static final int themes=0x7f050002;
+        public static final int themes_value=0x7f050001;
         public static final int unpackimg=0x7f050009;
     }
     public static final class attr {
@@ -62,14 +61,13 @@ public final class R {
     }
     public static final class id {
         public static final int about=0x7f0a0006;
-        public static final int donate=0x7f0a000a;
-        public static final int exit=0x7f0a000b;
+        public static final int donate=0x7f0a0009;
+        public static final int exit=0x7f0a000a;
         public static final int file_modify=0x7f0a0002;
         public static final int file_name=0x7f0a0001;
         public static final int files=0x7f0a0004;
         public static final int icon=0x7f0a0000;
         public static final int refresh=0x7f0a0007;
-        public static final int rom=0x7f0a0009;
         public static final int setting=0x7f0a0005;
         public static final int task=0x7f0a0008;
         public static final int tvpath=0x7f0a0003;
