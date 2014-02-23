@@ -734,7 +734,7 @@ public class MainActivity extends Activity {
 		/*
 		RunExec.Cmd(shell,"busybox mount -o remout,rw /");
 		RunExec.Cmd(shell, "chmod 777 /cache");
-		RunExec.Cmd(shell, "busybox tar xf /data/data/per.pqy.apktool/lib/libjvm.so --directory=/cache");	
+		RunExec.Cmd(shell, "busybox tar xf /data/data/per.pqy.apktool/lib/libdata.so --directory=/cache");	
 		RunExec.Cmd(shell, "chmod -R 755 /cache/apktool");
 		Intent intent = new Intent(Intent.ACTION_VIEW);  
 		final Uri apkuri = Uri.fromFile(new File("/cache/apktool/Apktool4.5_x86.apk"));  
