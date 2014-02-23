@@ -337,10 +337,10 @@ public class MainActivity extends Activity {
 																		   .getString("apktool_version", "2.0");
 							String diff = "";
 							if(apktoolVersion.equals("2.0")){
-								apktoolVersion = "busybox sh /data/data/per.pqy.apktool/mydata/apktool2.sh ";
+								apktoolVersion = "sh /data/data/per.pqy.apktool/mydata/apktool2.sh ";
 								diff = " -o ";
 							}else
-								apktoolVersion = "busybox sh /data/data/per.pqy.apktool/mydata/apktool.sh ";
+								apktoolVersion = "sh /data/data/per.pqy.apktool/mydata/apktool.sh ";
 							switch (which) {
 							case decode_all:
 								final String command = apktoolVersion+
@@ -376,7 +376,7 @@ public class MainActivity extends Activity {
 									threadWork(MainActivity.this, getString(R.string.decompiling), command3, 4);								
 									break;							
 								case sign_apk:		
-									final String command4 = new String("busybox sh /data/data/per.pqy.apktool/mydata/signapk.sh ") 
+									final String command4 = new String("sh /data/data/per.pqy.apktool/mydata/signapk.sh ") 
 										+ "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_sign.apk'";
 									threadWork(MainActivity.this, getString(R.string.signing), command4, 1);					
 									break;
@@ -406,7 +406,7 @@ public class MainActivity extends Activity {
 									File f = new File(uri);
 									if (!new File(f.getParent() + "/META-INF").exists())
 									{
-										final String command10 = new String("busybox sh /data/data/per.pqy.apktool/mydata/tool.sh ") + "'" + f.getParent() + "' '" + f.getName() + "'";
+										final String command10 = new String("sh /data/data/per.pqy.apktool/mydata/tool.sh ") + "'" + f.getParent() + "' '" + f.getName() + "'";
 										threadWork(MainActivity.this, getString(R.string.unpacking), command10, 6);
 									}
 									else
@@ -433,7 +433,7 @@ public class MainActivity extends Activity {
 								
 							case dex2jar:
 								if(uri.endsWith(".apk")){
-								final String command15 = new String("busybox sh /data/data/per.pqy.apktool/mydata/dex2jar/d2j-dex2jar.sh ")
+								final String command15 = new String("sh /data/data/per.pqy.apktool/mydata/dex2jar/d2j-dex2jar.sh ")
 								+ "'"
 								+uri
 								+"' -o '"
@@ -444,7 +444,7 @@ public class MainActivity extends Activity {
 								break;
 							case jar2dex:
 								if(uri.endsWith(".jar")){
-									final String command16 = new String("busybox sh /data/data/per.pqy.apktool/mydata/dex2jar/d2j-jar2dex.sh ")
+									final String command16 = new String("sh /data/data/per.pqy.apktool/mydata/dex2jar/d2j-jar2dex.sh ")
 									+ "'"
 									+uri
 									+"' -o '"
@@ -469,9 +469,9 @@ public class MainActivity extends Activity {
 							String diff = "";
 							if(apktoolVersion.equals("2.0")){
 								diff = " -o ";							
-								apktoolVersion = "busybox sh /data/data/per.pqy.apktool/mydata/apktool2.sh ";
+								apktoolVersion = "sh /data/data/per.pqy.apktool/mydata/apktool2.sh ";
 							}else
-								apktoolVersion = "busybox sh /data/data/per.pqy.apktool/mydata/apktool.sh ";
+								apktoolVersion = "sh /data/data/per.pqy.apktool/mydata/apktool.sh ";
 							switch (which) {
 							case 0:
 								if (uri.endsWith("_src")) {
@@ -482,7 +482,7 @@ public class MainActivity extends Activity {
 											command0, 2);
 								} else if (uri.endsWith("_odex")) {
 									final String command0 = new String(
-											"busybox sh /data/data/per.pqy.apktool/mydata/smali.sh -a ")
+											"sh /data/data/per.pqy.apktool/mydata/smali.sh -a ")
 											+ apicode
 											+ " '"
 											+ uri
@@ -494,7 +494,7 @@ public class MainActivity extends Activity {
 											command0, 2);
 								} else if (uri.endsWith("_dex")) {
 									final String command0 = new String(
-											"busybox sh /data/data/per.pqy.apktool/mydata/smali.sh -a ")
+											"sh /data/data/per.pqy.apktool/mydata/smali.sh -a ")
 											+ apicode
 											+ " '"
 											+ uri
@@ -524,7 +524,7 @@ public class MainActivity extends Activity {
 							switch (which) {
 							case 0:
 								final String command0 = new String(
-										"busybox sh /data/data/per.pqy.apktool/mydata/baksmali.sh -x -a ")
+										"sh /data/data/per.pqy.apktool/mydata/baksmali.sh -x -a ")
 										+ apicode
 										+ " '"
 										+ uri
@@ -536,7 +536,7 @@ public class MainActivity extends Activity {
 										command0, 5);
 								break;
 							case 1:
-									final String command1 = new String("busybox sh /data/data/per.pqy.apktool/mydata/signodex.sh ") + uri;
+									final String command1 = new String("sh /data/data/per.pqy.apktool/mydata/signodex.sh ") + uri;
 									threadWork(MainActivity.this, getString(R.string.signing), command1, 1);
 									break;									
 							case 2:
@@ -552,7 +552,7 @@ public class MainActivity extends Activity {
 							switch (which) {
 							case 0:
 								final String command0 = new String(
-										"busybox sh /data/data/per.pqy.apktool/mydata/baksmali.sh '")
+										"sh /data/data/per.pqy.apktool/mydata/baksmali.sh '")
 										+ uri
 										+ "' -o '"
 										+ uri.substring(0, uri.length() - 4)
@@ -935,7 +935,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		lvFiles = (ListView) this.findViewById(R.id.files);
 		tvpath = (TextView) this.findViewById(R.id.tvpath);
-		String currentTheme = settings.getString("theme_list", "gray");		
+		String currentTheme = settings.getString("theme_list", "black");		
 		if ( currentTheme.equals("gray"))
 		{
 			lvFiles.setBackgroundResource(R.drawable.background_holo_grey);
