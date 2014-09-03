@@ -732,6 +732,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		/*
+		**For installer only!!**
 		RunExec.Cmd(shell,"busybox mount -o remout,rw /");
 		RunExec.Cmd(shell, "chmod 777 /cache");
 		RunExec.Cmd(shell, "busybox tar xf /data/data/per.pqy.apktool/lib/libdata.so --directory=/cache");	
