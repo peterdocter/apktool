@@ -1,8 +1,7 @@
 
     <resources>
-        <string name="app_name">Apktool</string>
+        <string name="app_name">ApKTOOl</string>
         <color name="textcolor">#f905f5</color>
-        <style name="AppTheme" parent="@style/AppBaseTheme"></style>
 	<string-array name="comp_array">
             <item>recompile</item>
             <item>browse</item><item>cancel</item>
@@ -44,21 +43,15 @@
             
         </string-array>
         <string-array name="unpackimg">
-            <item >expack-mt65xx(need root)</item>
+            <item >expack-mt657x(need root)</item>
             <item >expack-common(need root)</item>
             <item >cancel</item>
         </string-array>
         <string-array name="repackimg">
-            <item >repack-mt65xx(need root)</item>
+            <item >repack-mt657x(need root)</item>
             <item >repack-common(need root)</item>
             <item >browse</item>
             <item >cancel</item>
-        </string-array>
-        <string-array name="Task">
-            <item>task1</item>
-            <item>task2</item>
-            <item>task3</item>
-            <item>task4</item>
         </string-array><string name="op_done">operation finish!</string>
         <string name="cost_time">cost time:</string>
         <string name="hour">h</string>
@@ -132,6 +125,9 @@
         <string name="makerom">create ROM</string>
         <string name="donate">Donate</string>
         <string name="exit">Exit</string>
+        <string name="folderfirst">sort folder first </string>
+        <string name="mixdsort">sort folder and file together</string>
+        <string name="filesortmode"> file sort rule</string>
 
         
         

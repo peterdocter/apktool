@@ -14,15 +14,5 @@
         <item >cm10.2</item>
         <item >cm11.0</item>
     </string-array>
-    <string-array name="themes_value">
-        <item >gray</item>
-        <item >blue</item>
-        <item >black</item>
-    </string-array>
-    <string-array name="themes">
-        <item >gray background</item>
-        <item >blue background</item>
-        <item >black background</item>
-    </string-array>
     
 </resources>

@@ -1,8 +1,7 @@
 
     <resources>
-        <string name="app_name">Apktool</string>
+        <string name="app_name">ApKTOOl</string>
         <color name="textcolor">#f905f5</color>
-        <style name="AppTheme" parent="@style/AppBaseTheme"></style>
 	<string-array name="comp_array">
             <item>编译</item>
             <item>浏览</item><item>返回</item>
@@ -44,21 +43,15 @@
             
         </string-array>
         <string-array name="unpackimg">
-            <item >解包-mt65xx(root)</item>
+            <item >解包-mt657x(root)</item>
             <item >解包-通用(root)</item>
             <item >返回</item>
         </string-array>
         <string-array name="repackimg">
-            <item >打包-mt65xx(root)</item>
+            <item >打包-mt657x(root)</item>
             <item >打包-通用(root)</item>
             <item >浏览</item>
             <item >返回</item>
-        </string-array>
-        <string-array name="Task">
-            <item>任务一</item>
-            <item>任务二</item>
-            <item>任务三</item>
-            <item>任务四</item>
         </string-array><string name="op_done">操作完成！</string>
         <string name="cost_time">本次操作共耗时：</string>
         <string name="hour">时</string>
@@ -132,6 +125,9 @@
         <string name="makerom">ROM制作</string>
         <string name="donate">捐赠</string>
         <string name="exit">退出</string>
+        <string name="folderfirst">文件夹排在文件前面</string>
+        <string name="mixdsort">文件夹和文件一起排列</string>
+        <string name="filesortmode">文件排列方式</string>
 
         
         
