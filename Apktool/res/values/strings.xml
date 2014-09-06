@@ -2,7 +2,6 @@
     <resources>
         <string name="app_name">Apktool</string>
         <color name="textcolor">#f905f5</color>
-        <style name="AppTheme" parent="@style/AppBaseTheme"></style>
 	<string-array name="comp_array">
             <item>recompile</item>
             <item>browse</item><item>cancel</item>
@@ -119,6 +118,9 @@
         <string name="makerom">create ROM</string>
         <string name="donate">Donate</string>
         <string name="exit">Exit</string>
+        <string name="filesortmode">file sort rule</string>
+        <string name="folderfirst">sort folder first</string>
+        <string name="mixdsort">sort folder and file together</string>
 
         
         

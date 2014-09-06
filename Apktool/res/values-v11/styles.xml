@@ -4,13 +4,5 @@
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     -->
-	<style name="TwActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-		<item name="android:background">@drawable/tw_ab_transparent_dark_holo</item>
-	</style>
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-        <!-- API 11 theme customizations can go here. -->
-		<item name="android:windowBackground">@drawable/background_holo_blue</item>
-		<item name="android:actionBarStyle">@style/TwActionBar</item>
-    </style>
 
 </resources>

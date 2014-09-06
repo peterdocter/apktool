@@ -10,9 +10,6 @@
 		    android:id="@+id/refresh"
 			android:title="@string/refresh"></item>
 		<item 
-		    android:id="@+id/task"
-			android:title="@string/tasks"></item>
-		<item 
 		    android:id="@+id/donate" 
 			android:title="@string/donate"></item>
 		<item 

@@ -151,7 +151,7 @@ public class MainActivity extends Activity {
 					tmp_str += Integer.toString((int) time)
 							+ getString(R.string.second);
 				}
-				if (settings.getBoolean("wrap_msg", false) == false) {
+				if (settings.getBoolean("wrap_msg", true) == false) {
 					HorizontalScrollView hscv = new HorizontalScrollView(
 							MainActivity.this);
 					ScrollView scv = new ScrollView(MainActivity.this);
@@ -226,6 +226,7 @@ public class MainActivity extends Activity {
 
 	public void threadWork(Context context, String message,
 			final String command, final int what) {
+		/*
 		int freeTask = -1;
 		if (!tasks[0])
 			freeTask = 0;
@@ -240,7 +241,8 @@ public class MainActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
-		Thread thread = new myThread(freeTask) {
+		*/
+		Thread thread = new Thread() {
 			public void run() {
 				java.lang.Process process = null;
 				DataOutputStream os = null;
@@ -272,7 +274,7 @@ public class MainActivity extends Activity {
 						bundle.putString("op", str);
 						bundle.putInt("what", what);
 						bundle.putBoolean("isTemp", true);
-						bundle.putInt("tasknum", tasknum);
+//						bundle.putInt("tasknum", tasknum);
 						msg.setData(bundle);
 						myHandler.sendMessage(msg);
 					}
@@ -301,6 +303,7 @@ public class MainActivity extends Activity {
 		myDialog.setMessage(message);
 		myDialog.setIndeterminate(true);
 		myDialog.setCancelable(false);
+		/*
 		myDialog.setButton(DialogInterface.BUTTON_POSITIVE,
 				getString(R.string.put_background),
 				new DialogInterface.OnClickListener() {
@@ -309,9 +312,17 @@ public class MainActivity extends Activity {
 						myDialog.dismiss();
 					}
 				});
-		
-		dialogs[freeTask] = myDialog;
-		tasks[freeTask] = true;
+	*/
+		myDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+				  getString(R.string.cancel), new DialogInterface.OnClickListener() {
+				  
+				  @Override public void onClick(DialogInterface dialog, int which) {
+					  RunExec.Cmd(shell, "sh /cache/apktool/killjob.sh");
+				  
+				  
+				  } });
+//		dialogs[freeTask] = myDialog;
+//		tasks[freeTask] = true;
 		myDialog.show();
 	}
 
@@ -668,7 +679,7 @@ public class MainActivity extends Activity {
 							}
 						}
 					}).create();
-		
+		/*
 		case TASK:
 			return new AlertDialog.Builder(MainActivity.this).setItems(
 					R.array.Task, new DialogInterface.OnClickListener() {
@@ -716,6 +727,7 @@ public class MainActivity extends Activity {
 							}
 						}
 					}).create();
+			*/
 
 		}
 
@@ -770,6 +782,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		lvFiles = (ListView) this.findViewById(R.id.files);
 		tvpath = (TextView) this.findViewById(R.id.tvpath);
+		/*
 		String currentTheme = settings.getString("theme_list", "black");		
 		if ( currentTheme.equals("gray"))
 		{
@@ -791,7 +804,7 @@ public class MainActivity extends Activity {
 			
 		}
 		setTheme(R.style.AppBaseThemeDeviceDefault);
-		
+		*/
 		File root = new File(settings.getString("parent", "/"));
 		if (!root.canRead())
 			root = new File("/");
@@ -867,13 +880,18 @@ public class MainActivity extends Activity {
 	@SuppressLint("SimpleDateFormat")
 	private void inflateListView(File[] files) {
 		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-		Arrays.sort(files, new FileComparator());
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+		if (settings.getBoolean("sortmode", true) == true) 
+			Arrays.sort(files, new FileComparator());
+		
+		else
+			Arrays.sort(files, new FileComparator1());
 
 		for (int i = 0; i < files.length; i++) {
 			Map<String, Object> listItem = new HashMap<String, Object>();
 			if (files[i].isDirectory()) {
 				listItem.put("icon",
-						getFileIcon(MainActivity.this, null, fileType.FOLDER));
+						getFileIcon(MainActivity.this, files[i].getAbsolutePath(), fileType.FOLDER));
 			} else if (files[i].getName().endsWith(".apk")) {
 				listItem.put(
 						"icon",
@@ -963,7 +981,11 @@ public class MainActivity extends Activity {
 				new String[] { "filename", "icon", "modify" }, new int[] {
 						R.id.file_name, R.id.icon, R.id.file_modify });
 
+		int index = lvFiles.getFirstVisiblePosition();
+		View v = lvFiles.getChildAt(index);
+		int top = (v == null) ? 0 : v.getTop();
 		lvFiles.setAdapter(adapter);
+		lvFiles.setSelectionFromTop(index, top);
 		tvpath.setText(currentParent.getAbsolutePath());
 
 	}
@@ -1007,13 +1029,13 @@ public class MainActivity extends Activity {
 		case R.id.about:
 			AlertDialog.Builder aboutDialog = new AlertDialog.Builder(this);
 			aboutDialog.setTitle(getString(R.string.about)).setMessage(
-					"Homepage https://code.google.com/p/apktool")
+					"apktool on android https://github.com/pqy330/apktool")
 			.setPositiveButton(getString(R.string.visit),new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface paramAnonymousDialogInterface,
 						int paramAnonymousInt) {
 					Intent intent = new Intent();
 					intent.setAction(Intent.ACTION_VIEW);
-					intent.setData(Uri.parse("https://code.google.com/p/apktool"));
+					intent.setData(Uri.parse("https://github.com/pqy330/apktool"));
 					startActivity(intent);
 		}
 	})
@@ -1023,9 +1045,7 @@ public class MainActivity extends Activity {
 		case R.id.exit:
 			finish();
 			return false;
-		case R.id.task:
-			showDialog(TASK);
-			return false;
+
 		
 		case R.id.donate:
 			Intent intent = new Intent();
@@ -1069,10 +1089,13 @@ public class MainActivity extends Activity {
 		System.exit(0);
 	}
 
-	public Drawable getFileIcon(Context context, String apkPath, fileType type) {
+	public Drawable getFileIcon(Context context, String path, fileType type) {
 		switch (type) {
 		case FOLDER:
-			return context.getResources().getDrawable(R.drawable.ic_folder);
+			if(new File(path).canRead())
+				return context.getResources().getDrawable(R.drawable.ic_folder);
+			else
+				return context.getResources().getDrawable(R.drawable.ic_folder_grey);
 
 		case NFILE:
 			return context.getResources().getDrawable(R.drawable.ic_file);
@@ -1110,12 +1133,12 @@ public class MainActivity extends Activity {
 		case APKFILE:
 			
 			PackageManager pm = MainActivity.this.getPackageManager();
-			PackageInfo info = pm.getPackageArchiveInfo(apkPath,
+			PackageInfo info = pm.getPackageArchiveInfo(path,
 					PackageManager.GET_ACTIVITIES);
 			if (info != null) {
 				ApplicationInfo appInfo = info.applicationInfo;
-				appInfo.sourceDir = apkPath;
-				appInfo.publicSourceDir = apkPath;
+				appInfo.sourceDir = path;
+				appInfo.publicSourceDir = path;
 				try {
 					return appInfo.loadIcon(pm);
 				} catch (OutOfMemoryError e) {

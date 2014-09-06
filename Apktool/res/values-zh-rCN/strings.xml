@@ -2,7 +2,6 @@
     <resources>
         <string name="app_name">Apktool</string>
         <color name="textcolor">#f905f5</color>
-        <style name="AppTheme" parent="@style/AppBaseTheme"></style>
 	<string-array name="comp_array">
             <item>编译</item>
             <item>浏览</item><item>返回</item>
@@ -132,6 +131,9 @@
         <string name="makerom">ROM制作</string>
         <string name="donate">捐赠</string>
         <string name="exit">退出</string>
+        <string name="filesortmode">文件排列方式</string>
+        <string name="folderfirst">文件夹排在文件前面</string>
+        <string name="mixdsort">文件夹和文件一起排列</string>
 
         
         

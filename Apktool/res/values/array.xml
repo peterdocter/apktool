@@ -4,15 +4,5 @@
         <item>2.0</item><item >1.5.2</item>
         
     </string-array>
-    <string-array name="themes_value">
-        <item>black</item><item >gray</item>
-        <item >blue</item>
-        
-    </string-array>
-    <string-array name="themes">
-        <item>black background</item><item >gray background</item>
-        <item >blue background</item>
-        
-    </string-array>
     
 </resources>
