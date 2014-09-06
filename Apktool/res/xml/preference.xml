@@ -6,7 +6,7 @@
         </CheckBoxPreference><CheckBoxPreference android:key="notify" android:summaryOn="@string/notify_on" android:summaryOff="@string/notify_off" android:title="@string/notify" android:defaultValue="flase" android:enabled="true"/>
         
         <CheckBoxPreference android:key="screen" android:title="@string/screen" android:summaryOn="@string/screen_on" android:defaultValue="false" android:summaryOff="@string/screen_off" android:enabled="true"/>
-        <CheckBoxPreference android:key="wrap_msg" android:title="@string/wrap_msg" android:summaryOn="@string/wrap_msg_on" android:defaultValue="true" android:summaryOff="@string/wrap_msg_off" android:enabled="true"/><CheckBoxPreference android:summaryOn="@string/folderfirst" android:title="@string/filesortmode" android:summaryOff="@string/mixdsort" android:defaultValue="true" android:key="filesortmode" />
+        <CheckBoxPreference android:key="wrap_msg" android:title="@string/wrap_msg" android:summaryOn="@string/wrap_msg_on" android:defaultValue="true" android:summaryOff="@string/wrap_msg_off" android:enabled="true"/><CheckBoxPreference android:summaryOn="@string/folderfirst" android:title="@string/filesortmode" android:summaryOff="@string/mixdsort" android:defaultValue="true" android:key="sortmode" />
         <ListPreference android:entryValues="@array/apktool_versions" android:title="@string/apktool_version" android:entries="@array/apktool_versions" android:key="apktool_version" android:enabled="true" android:defaultValue="2.0"/>
              
 </PreferenceScreen> 

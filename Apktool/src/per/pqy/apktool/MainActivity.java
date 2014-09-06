@@ -87,8 +87,8 @@ public class MainActivity extends Activity {
 			decode_res=2,sign_apk=3,make_odex=4,zipalign=5,
 			install=6,delete_dex=7,import_fw=8,dex2jar=9,jar2dex=10,decode_cancel=11;
 	
-	boolean tasks[] = new boolean[] { false, false, false, false };
-	ProgressDialog dialogs[] = new ProgressDialog[4];
+//	boolean tasks[] = new boolean[] { false, false, false, false };
+//	ProgressDialog dialogs[] = new ProgressDialog[4];
 
 	public String uri;
 	File currentParent;
@@ -124,8 +124,8 @@ public class MainActivity extends Activity {
 					mNotificationManager.notify(count++, notification);
 				}
 				myDialog.dismiss();
-				int num = bundle.getInt("tasknum");
-				tasks[num] = false;
+//				int num = bundle.getInt("tasknum");
+//				tasks[num] = false;
 				Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG)
 						.show();
 
@@ -487,9 +487,16 @@ public class MainActivity extends Activity {
 								break;
 								
 							case 1:
-								currentParent = new File(uri);
+								File tmp = new File(uri);
+								if(tmp.listFiles()==null){
+									Toast.makeText(MainActivity.this,getString(R.string.directory_no_permission),Toast.LENGTH_LONG).show();
+								}
+								else{
+								currentParent = tmp;
 								currentFiles = currentParent.listFiles();
 								inflateListView(currentFiles);
+								}
+								break;
 							case 2:
 								return;
 							}
@@ -745,12 +752,14 @@ public class MainActivity extends Activity {
 		
 		/*
 		**For installer only!!**
+		**
 		RunExec.Cmd(shell,"busybox mount -o remout,rw /");
 		RunExec.Cmd(shell, "chmod 777 /cache");
+		RunExec.Cmd(shell,"busybox rm -r /cache/apktool");
 		RunExec.Cmd(shell, "busybox tar xf /data/data/per.pqy.apktool/lib/libdata.so --directory=/cache");	
 		RunExec.Cmd(shell, "chmod -R 755 /cache/apktool");
 		Intent intent = new Intent(Intent.ACTION_VIEW);  
-		final Uri apkuri = Uri.fromFile(new File("/cache/apktool/Apktool4.5_x86.apk"));  
+		final Uri apkuri = Uri.fromFile(new File("/cache/apktool/Apktool4.6_x86.apk"));  
 		intent.setDataAndType(apkuri, "application/vnd.android.package-archive");  
 		startActivity(intent);
 		*/
@@ -848,9 +857,7 @@ public class MainActivity extends Activity {
 
 				File[] tem = currentFiles[position].listFiles();
 				if (tem == null) {
-					Toast.makeText(MainActivity.this,
-							getString(R.string.directory_no_permission),
-							Toast.LENGTH_LONG).show();
+					Toast.makeText(MainActivity.this,getString(R.string.directory_no_permission),Toast.LENGTH_LONG).show();
 				} else {
 
 					currentParent = currentFiles[position];
@@ -1046,13 +1053,14 @@ public class MainActivity extends Activity {
 			finish();
 			return false;
 
-		
+	/*	
 		case R.id.donate:
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("https://me.alipay.com/pangqingyuan"));
 			startActivity(intent);
 			return false;
+			*/
 		case R.id.refresh:
 			currentFiles = currentParent.listFiles();
 			inflateListView(currentFiles);
