@@ -89,8 +89,8 @@ public class MainActivity extends Activity {
 			install=6,delete_dex=7,extract_sign=8,delete_sign=9,
 			add_sign=10,import_fw=11,dex2jar=12,jar2dex=13,decode_cancel=14;
 	
-	boolean tasks[] = new boolean[] { false, false, false, false };
-	ProgressDialog dialogs[] = new ProgressDialog[4];
+//	boolean tasks[] = new boolean[] { false, false, false, false };
+//	ProgressDialog dialogs[] = new ProgressDialog[4];
 
 	public String uri;
 	File currentParent;
@@ -126,8 +126,8 @@ public class MainActivity extends Activity {
 					mNotificationManager.notify(count++, notification);
 				}
 				myDialog.dismiss();
-				int num = bundle.getInt("tasknum");
-				tasks[num] = false;
+//				int num = bundle.getInt("tasknum");
+//				tasks[num] = false;
 				Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG)
 						.show();
 
