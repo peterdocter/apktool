@@ -1214,13 +1214,14 @@ public class MainActivity extends Activity {
 			.setNegativeButton(getString(R.string.cancel),null)
 			.create().show();
 			return false;
-			
+		/*	
 		case R.id.donate:
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("https://me.alipay.com/pangqingyuan"));
 			startActivity(intent);
 			return false;
+			*/
 		case R.id.refresh:
 			currentFiles = currentParent.listFiles();
 			inflateListView(currentFiles);
