@@ -511,9 +511,16 @@ public class MainActivity extends Activity {
 								break;
 								
 							case 1:
-								currentParent = new File(uri);
-								currentFiles = currentParent.listFiles();
-								inflateListView(currentFiles);
+								File tmp = new File(uri);
+								if(tmp.listFiles()==null){
+									Toast.makeText(MainActivity.this,getString(R.string.directory_no_permission),Toast.LENGTH_LONG).show();									
+								}
+								else{
+									currentParent = tmp;
+									currentFiles = currentParent.listFiles();
+									inflateListView(currentFiles);
+								}
+								break;
 							case 2:
 								return;
 							}
@@ -695,7 +702,7 @@ public class MainActivity extends Activity {
 										+ "' /data/data/per.pqy.apktool/mydata");
 								extractData();
 								break;
-							case 5:
+							case 4:
 								return;
 							}
 						}
@@ -994,9 +1001,7 @@ public class MainActivity extends Activity {
 
 				File[] tem = currentFiles[position].listFiles();
 				if (tem == null) {
-					Toast.makeText(MainActivity.this,
-							getString(R.string.directory_no_permission),
-							Toast.LENGTH_LONG).show();
+					Toast.makeText(MainActivity.this,getString(R.string.directory_no_permission),Toast.LENGTH_LONG).show();
 				} else {
 
 					currentParent = currentFiles[position];
@@ -1017,7 +1022,7 @@ public class MainActivity extends Activity {
 				if (uri.contains("//"))
 					uri = RunExec.removeRepeatedChar(uri);
 				showDialog(LONGPRESS);
-				return false;
+				return true;
 			}
 		});
 	}
@@ -1175,7 +1180,7 @@ public class MainActivity extends Activity {
 		case R.id.about:
 			AlertDialog.Builder aboutDialog = new AlertDialog.Builder(this);
 			aboutDialog.setTitle(getString(R.string.about)).setMessage(
-					"apktool5.0 https://github.com/pqy330/apktool")
+					"apktool on android https://github.com/pqy330/apktool")
 			.setPositiveButton(getString(R.string.visit),new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface paramAnonymousDialogInterface,
 						int paramAnonymousInt) {
