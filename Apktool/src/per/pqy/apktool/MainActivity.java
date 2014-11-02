@@ -390,7 +390,7 @@ public class MainActivity extends Activity {
 									break;
 
 								case zipalign:
-									final String command7 = new String(" zipalign -f -v 4 ") + "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_zipalign.apk'";
+									final String command7 = new String(" zipalign -f 4 ") + "'" + uri + "' '" + uri.substring(0, uri.length() - 4) + "_zipalign.apk'";
 									threadWork(MainActivity.this, getString(R.string.aligning), command7, 8);
 									break;
 								case install:
