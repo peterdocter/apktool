@@ -5,7 +5,7 @@
         
     </string-array>
     <string-array name="aapt_versions">
-        <item>4.4</item><item >4.3</item>
+        <item >5.0</item><item>4.4</item><item >4.3</item>
         <item >4.2</item>
         <item >4.1</item>
         <item >4.0</item>
@@ -13,6 +13,13 @@
         
         <item >cm10.2</item>
         <item >cm11.0</item>
+        
+    </string-array>
+    <string-array name="Task">
+        <item >Task 1</item>
+        <item >Task 2</item>
+        <item >Task 3</item>
+        <item >Task 4</item>
     </string-array>
     
 </resources>

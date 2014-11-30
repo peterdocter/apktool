@@ -1,2 +1,4 @@
 .*
+Apktool/bin
+Apktool/libs
 !/.gitignore

@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 	private static final int LONGPRESS = 5;
 	private static final int UNPACKIMG = 6;
 	private static final int REPACKIMG = 7;
-	private static final int TASK = 8;
+//	private static final int TASK = 8;
 //	private static final int JAVA = 9;
 //	private static final int CLASS = 10;
 	
@@ -126,8 +126,9 @@ public class MainActivity extends Activity {
 					mNotificationManager.notify(count++, notification);
 				}
 				myDialog.dismiss();
-//				int num = bundle.getInt("tasknum");
+				int num = bundle.getInt("tasknum");
 //				tasks[num] = false;
+//				dialogs[num].dismiss();
 				Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG)
 						.show();
 
@@ -305,7 +306,7 @@ public class MainActivity extends Activity {
 		myDialog.setMessage(message);
 		myDialog.setIndeterminate(true);
 		myDialog.setCancelable(false);
-		/*
+		
 		myDialog.setButton(DialogInterface.BUTTON_POSITIVE,
 				getString(R.string.put_background),
 				new DialogInterface.OnClickListener() {
@@ -314,7 +315,7 @@ public class MainActivity extends Activity {
 						myDialog.dismiss();
 					}
 				});
-		*/
+		/*
 		  myDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
 		  getString(R.string.cancel), new DialogInterface.OnClickListener() {
 		  
@@ -323,7 +324,7 @@ public class MainActivity extends Activity {
 		  
 		  
 		  } });
-		 
+		 */
 //		dialogs[freeTask] = myDialog;
 //		tasks[freeTask] = true;
 		myDialog.show();

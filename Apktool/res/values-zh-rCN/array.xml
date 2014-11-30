@@ -5,7 +5,7 @@
         
     </string-array>
     <string-array name="aapt_versions">
-        <item>4.4</item><item >4.3</item>
+        <item >5.0</item><item>4.4</item><item >4.3</item>
         <item >4.2</item>
         <item >4.1</item>
         <item >4.0</item>
@@ -13,6 +13,7 @@
         
         <item >cm10.2</item>
         <item >cm11.0</item>
+        
     </string-array>
     <string-array name="themes_value">
         <item >gray</item>
@@ -23,6 +24,12 @@
         <item >灰色背景</item>
         <item >蓝色背景</item>
         <item >黑色背景</item>
+    </string-array>
+    <string-array name="Task">
+        <item >任务一</item>
+        <item >任务二</item>
+        <item >任务三</item>
+        <item >任务四</item>
     </string-array>
     
 </resources>
