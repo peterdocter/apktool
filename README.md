@@ -19,3 +19,7 @@ source code of java part Apktool5.0.1_src.tar.gz
 国语：
 Apktool手机版5.0正式发布！，国内朋友可到百度网盘下载使用！
 http://pan.baidu.com/s/1dD7wQqt
+
+
+20150324:
+http://pan.baidu.com/s/1o6okqbo
