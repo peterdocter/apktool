@@ -23,3 +23,5 @@ http://pan.baidu.com/s/1dD7wQqt
 
 20150324:
 http://pan.baidu.com/s/1o6okqbo
+
+Note:apktool 5.x has moved to https://github.com/dongfangxunlei/apktool5
